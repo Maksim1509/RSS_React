@@ -1,0 +1,7 @@
+.nav__link_active {
+  color: red;
+  cursor: auto;
+  &:hover {
+    color: red;
+  }
+}
