@@ -1,0 +1,11 @@
+.home {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  &__cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+}

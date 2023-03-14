@@ -1,3 +1,4 @@
+import Search from '../Search/Search';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './style.scss';
@@ -7,7 +8,7 @@ const setActive = ({ isActive }: { isActive: boolean }) =>
 
 const Header = () => (
   <header className="header">
-    <nav className="nav">
+    <nav className="nav container">
       <ul className="nav__list">
         <li className="nav__item">
           <NavLink to={'/'} className={setActive}>
@@ -20,6 +21,7 @@ const Header = () => (
           </NavLink>
         </li>
       </ul>
+      <Search />
     </nav>
   </header>
 );

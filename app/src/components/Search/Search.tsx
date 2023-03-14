@@ -5,7 +5,7 @@ class Search extends React.Component {
   state: {
     value: string;
   };
-  constructor(props: object) {
+  constructor(props = {}) {
     super(props);
     this.state = { value: localStorage.getItem('searchValue') || '' };
   }
