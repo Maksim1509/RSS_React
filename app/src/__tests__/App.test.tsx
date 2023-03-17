@@ -1,17 +1,12 @@
 // Imports
 import { render, screen } from '@testing-library/react';
-import Header from 'components/Header/Header';
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import App from '../App';
 
 describe('App', () => {
   it('render App component', () => {
-    render(<App />);
-    expect(screen.getByText(/About us/i)).toBeInTheDocument();
-  });
-
-  it('header has title page', () => {
-    render(<Header title={title} />);
-    expect(screen.getAllByText(title)).toBeInTheDocument();
+    render(<App />, { wrapper: BrowserRouter });
+    expect(screen.getByText(/about us/i)).toBeInTheDocument();
   });
 });
