@@ -20,7 +20,10 @@ class Homepage extends React.Component {
   render(): React.ReactNode {
     return (
       <section className="home">
-        <h1>Home</h1>
+        <h1 className="home__title">Home</h1>
+        <div className="home__search">
+          <Search />
+        </div>
         <section className="home__cards">{this.renderCards(this.state.cards)}</section>
       </section>
     );

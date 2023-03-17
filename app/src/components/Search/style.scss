@@ -9,8 +9,11 @@
     font-size: 18px;
     outline: none;
     background-color: transparent;
-    color: rgba(255, 255, 255, 0.92);
+    color: #424245;
     letter-spacing: 0.8px;
+    &:focus {
+      border: 2px solid #000;
+    }
   }
   &__label {
     position: relative;

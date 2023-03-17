@@ -1,4 +1,3 @@
-import Search from '../Search/Search';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './style.scss';
@@ -21,7 +20,6 @@ const Header = () => (
           </NavLink>
         </li>
       </ul>
-      <Search />
     </nav>
   </header>
 );

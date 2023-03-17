@@ -1,11 +1,21 @@
 .home {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  padding-top: 40px;
+  row-gap: 40px;
   &__cards {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
+  }
+  &__title {
+    position: absolute;
+    top: -62px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
   }
 }
