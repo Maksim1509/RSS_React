@@ -24,7 +24,9 @@ class Homepage extends React.Component {
         <div className="home__search">
           <Search />
         </div>
-        <section className="home__cards">{this.renderCards(this.state.cards)}</section>
+        <section className="home__cards" data-testid="cards-list">
+          {this.renderCards(this.state.cards)}
+        </section>
       </section>
     );
   }

@@ -28,6 +28,7 @@ class Search extends React.Component {
             type="text"
             value={this.state.value}
             onChange={this.handleChange}
+            data-testid="search-input"
           />
           <div className="search__icon" />
         </label>
