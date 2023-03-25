@@ -1,0 +1,11 @@
+.about {
+  padding-top: 40px;
+  position: relative;
+  &__title {
+    position: absolute;
+    top: -62px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+  }
+}

@@ -1,0 +1,14 @@
+.form-page {
+  padding-top: 40px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  &__title {
+    position: absolute;
+    top: -62px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    letter-spacing: 0.8px;
+  }
+}
