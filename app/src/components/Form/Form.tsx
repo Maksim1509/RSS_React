@@ -14,7 +14,7 @@ class Form extends React.Component {
     return (
       <form className="form" onSubmit={this.handleSubmit}>
         <input type="text" name="name" placeholder="Name" />
-        <input type="date" name="date" />
+        <input type="date" name="date" data-testid="form-date" />
         <select name="city">
           <option value="saratov">Saratov</option>
           <option value="moscow">Moscow</option>

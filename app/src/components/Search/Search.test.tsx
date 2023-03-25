@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
-import Search from '../components/Search/Search';
+import Search from './Search';
 
 describe('Search', () => {
   test('change search values', async () => {
