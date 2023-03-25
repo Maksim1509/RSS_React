@@ -15,6 +15,11 @@ const Header = () => (
           </NavLink>
         </li>
         <li className="nav__item">
+          <NavLink to={'/form'} className={setActive}>
+            Form
+          </NavLink>
+        </li>
+        <li className="nav__item">
           <NavLink to={'/about'} className={setActive}>
             About us
           </NavLink>
