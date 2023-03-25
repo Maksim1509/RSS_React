@@ -13,25 +13,25 @@ class Form extends React.Component {
   render() {
     return (
       <form className="form" onSubmit={this.handleSubmit}>
-        <input type="text" name="name" placeholder="Name" />
-        <input type="date" name="date" data-testid="form-date" />
-        <select name="city">
+        <input type="text" name="name" placeholder="Name" required />
+        <input type="date" name="date" data-testid="form-date" required />
+        <select name="city" required>
           <option value="saratov">Saratov</option>
           <option value="moscow">Moscow</option>
           <option value="sochi">Sochi</option>
         </select>
         <label>
           Male
-          <input type="radio" name="gender" value="male" />
+          <input type="radio" name="gender" value="male" required />
         </label>
         <label>
           Female
-          <input type="radio" name="gender" value="female" />
+          <input type="radio" name="gender" value="female" required />
         </label>
-        <input type="file" name="file" />
+        <input type="file" name="file" required />
         <label>
           I consent to my personal data
-          <input type="checkbox" name="personal-checkbox" />
+          <input type="checkbox" name="personal-checkbox" required />
         </label>
         <button type="submit">Submit</button>
       </form>
