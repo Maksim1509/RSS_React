@@ -1,40 +1,33 @@
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import './style.scss';
 
-class Search extends React.Component {
-  state: {
-    value: string;
-  };
-  constructor(props = {}) {
-    super(props);
-    this.state = { value: localStorage.getItem('searchValue') || '' };
-  }
+const Search = () => {
+  const initState = localStorage.getItem('searchValue') || '';
+  const [value, setValue] = useState(initState);
 
-  handleChange = (e: ChangeEvent) => {
+  const handleChange = (e: ChangeEvent) => {
     const { value } = e.target as HTMLInputElement;
-    this.setState({ value });
+    setValue(value);
   };
 
-  componentWillUnmount() {
-    localStorage.setItem('searchValue', this.state.value);
-  }
+  useEffect(() => {
+    return () => localStorage.setItem('searchValue', value);
+  });
 
-  render() {
-    return (
-      <form className="search" action="">
-        <label className="search__label">
-          <input
-            className="search__input"
-            type="text"
-            value={this.state.value}
-            onChange={this.handleChange}
-            data-testid="search-input"
-          />
-          <div className="search__icon" />
-        </label>
-      </form>
-    );
-  }
-}
+  return (
+    <form className="search" action="">
+      <label className="search__label">
+        <input
+          className="search__input"
+          type="text"
+          value={value}
+          onChange={handleChange}
+          data-testid="search-input"
+        />
+        <div className="search__icon" />
+      </label>
+    </form>
+  );
+};
 
 export default Search;
