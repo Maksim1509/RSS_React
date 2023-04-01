@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import './FormCard.scss';
 import { FormData } from 'components/Form/Form';
 
@@ -17,9 +17,9 @@ const FormCard = ({ name, date, category, condition, file }: FormData) => {
     <section className="form-card">
       <p>{name}</p>
       <p>{date}</p>
-      <p>{category}</p>
-      <p>{condition}</p>
-      <img ref={imageRef} alt="image" />
+      <p>Category: {category}</p>
+      <p>Condition: {condition}</p>
+      <img className="form-card__img" ref={imageRef} alt="image" />
     </section>
   );
 };

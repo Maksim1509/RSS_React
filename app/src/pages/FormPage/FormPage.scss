@@ -2,7 +2,10 @@
   padding-top: 40px;
   position: relative;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  row-gap: 40px;
   &__title {
     position: absolute;
     top: -62px;
@@ -10,5 +13,8 @@
     transform: translateX(-50%);
     color: #fff;
     letter-spacing: 0.8px;
+  }
+  &__cards {
+    width: 100%;
   }
 }

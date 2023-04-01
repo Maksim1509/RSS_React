@@ -4,7 +4,7 @@ import { FormData } from 'components/Form/Form';
 import FormCard from '../../components/FormCard/FormCard';
 
 const FormCardList = (props: { cards: FormData[] }) => (
-  <ul>
+  <ul className="form-card-list">
     {props.cards.map((c, i) => (
       <li key={i}>
         <FormCard {...c} />
