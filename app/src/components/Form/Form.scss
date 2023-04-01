@@ -15,11 +15,34 @@
     margin-top: -12px;
   }
   &__field {
+    border: 2px solid blue;
+    border-radius: 5px;
+    height: 26px;
+    padding-left: 10px;
     &:focus {
       outline: none;
     }
     &_error {
       border: 2px solid red;
+    }
+  }
+  &__label {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+  }
+  &__field-title {
+    margin: 0;
+    font-weight: normal;
+    font-size: 1em;
+  }
+  &__checkbox {
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+    input {
+      width: 20px;
+      height: 20px;
     }
   }
 }

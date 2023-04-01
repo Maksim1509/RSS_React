@@ -56,7 +56,7 @@ const Form = () => {
         name="date"
         render={({ message }) => <p className="form__error">{message}</p>}
       />
-      <label>
+      <label className="form__label">
         Category
         <select
           className={`form__field ${errors.category ? 'form__field_error' : ''}`}
@@ -75,20 +75,23 @@ const Form = () => {
         name="category"
         render={({ message }) => <p className="form__error">{message}</p>}
       />
-      <label>
-        New
-        <input
-          type="radio"
-          value="new"
-          {...register('condition', {
-            validate: (value) => conditionValidate(value) || 'Select condition',
-          })}
-        />
-      </label>
-      <label>
-        Used
-        <input type="radio" value="used" {...register('condition')} />
-      </label>
+      <div className="form__wrap-radio">
+        <h3 className="form__field-title">Condition</h3>
+        <label>
+          New
+          <input
+            type="radio"
+            value="new"
+            {...register('condition', {
+              validate: (value) => conditionValidate(value) || 'Select condition',
+            })}
+          />
+        </label>
+        <label>
+          Used
+          <input type="radio" value="used" {...register('condition')} />
+        </label>
+      </div>
       <ErrorMessage
         errors={errors}
         name="condition"
@@ -100,7 +103,7 @@ const Form = () => {
         name="file"
         render={({ message }) => <p className="form__error">{message}</p>}
       />
-      <label>
+      <label className="form__checkbox">
         I agree with the posting rules
         <input type="checkbox" {...register('checkbox', { required: 'Accept the agreement' })} />
       </label>
