@@ -7,4 +7,19 @@
   border: 2px solid #000;
   border-radius: 5px;
   box-shadow: 8px 7px 8px 15px rgba(34, 60, 80, 0.2);
+  &__error {
+    color: red;
+    font-size: 12px;
+    padding: 0;
+    margin: 0;
+    margin-top: -12px;
+  }
+  &__field {
+    &:focus {
+      outline: none;
+    }
+    &_error {
+      border: 2px solid red;
+    }
+  }
 }
