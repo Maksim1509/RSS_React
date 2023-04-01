@@ -3,27 +3,33 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import './Form.scss';
 
-type Inputs = {
+export type FormData = {
   name: string;
   date: string;
   category: string;
-  condition: string | null;
+  condition: string;
   file: FileList;
   checkbox: boolean;
+};
+
+type FormProps = {
+  addCard: (card: FormData) => void;
 };
 
 const categoryValidate = (value: string): boolean => !!value;
 const conditionValidate = (value: string | null): boolean => !!value;
 
-const Form = () => {
+const Form = (props: FormProps) => {
+  const { addCard } = props;
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<Inputs>({ mode: 'onSubmit' });
+  } = useForm<FormData>({ mode: 'onSubmit' });
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
+  const onSubmit: SubmitHandler<FormData> = (data) => {
+    addCard(data);
     reset();
     console.log(data);
   };
