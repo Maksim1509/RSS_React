@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import './Form.scss';
@@ -20,20 +20,30 @@ const categoryValidate = (value: string): boolean => !!value;
 const conditionValidate = (value: string | null): boolean => !!value;
 
 const Form = (props: FormProps) => {
+  const [file, setFile] = useState<FileList>();
   const { addCard } = props;
   const {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
-  } = useForm<FormData>({ mode: 'onSubmit' });
+    formState: { errors, isSubmitSuccessful },
+  } = useForm<FormData>({
+    mode: 'onSubmit',
+  });
+
+  const hendleFileInput = (e: ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files as FileList;
+    setFile(files);
+  };
 
   const onSubmit: SubmitHandler<FormData> = (data) => {
-    addCard(data);
-    reset();
-    console.log(data);
+    if (file) {
+      addCard({ ...data, file });
+    }
   };
-  console.log(errors);
+  useEffect(() => {
+    if (isSubmitSuccessful) reset();
+  }, [reset, isSubmitSuccessful]);
   return (
     <form className="form" onSubmit={handleSubmit(onSubmit)}>
       <input
@@ -103,7 +113,11 @@ const Form = (props: FormProps) => {
         name="condition"
         render={({ message }) => <p className="form__error">{message}</p>}
       />
-      <input type="file" {...register('file', { required: 'Add image' })} />
+      <input
+        type="file"
+        {...register('file', { required: 'Add image' })}
+        onChange={hendleFileInput}
+      />
       <ErrorMessage
         errors={errors}
         name="file"
