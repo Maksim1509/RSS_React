@@ -30,6 +30,7 @@ const Form = (props: FormProps) => {
     formState: { errors, isSubmitSuccessful },
   } = useForm<FormData>({
     mode: 'onSubmit',
+    reValidateMode: 'onSubmit',
   });
 
   const hendleFileInput = (e: ChangeEvent<HTMLInputElement>) => {
