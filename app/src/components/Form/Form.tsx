@@ -142,7 +142,9 @@ const Form = (props: FormProps) => {
           name="checkbox"
           render={({ message }) => <p className="form__error">{message}</p>}
         />
-        <button type="submit">Submit</button>
+        <button className="form__submit" type="submit">
+          Submit
+        </button>
       </form>
     </>
   );

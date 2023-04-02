@@ -45,6 +45,23 @@
       height: 20px;
     }
   }
+  &__submit {
+    background-color: transparent;
+    border: 2px solid #000;
+    border-radius: 5px;
+    width: 40%;
+    align-self: center;
+    cursor: pointer;
+    &:hover {
+      box-shadow: 1px 1px 10px 2px rgba(34, 60, 80, 0.2);
+    }
+  }
+  input {
+    cursor: pointer;
+  }
+  select {
+    cursor: pointer;
+  }
 }
 
 .modal {
