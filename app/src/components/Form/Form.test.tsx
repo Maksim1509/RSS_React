@@ -4,7 +4,7 @@ import Form from './Form';
 
 describe('Form', () => {
   it('render Form component', () => {
-    render(<Form />);
+    render(<Form addCard={jest.fn} />);
     expect(screen.getByPlaceholderText('Name')).toBeInTheDocument();
     expect(screen.getByTestId('form-date')).toBeInTheDocument();
     expect(screen.getByText(/submit/i)).toBeInTheDocument();

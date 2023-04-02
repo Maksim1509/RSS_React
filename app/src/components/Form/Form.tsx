@@ -1,42 +1,153 @@
-import React, { FormEvent } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { ErrorMessage } from '@hookform/error-message';
 import './Form.scss';
 
-class Form extends React.Component {
-  constructor(props = {}) {
-    super(props);
-  }
+export type FormData = {
+  name: string;
+  date: string;
+  category: string;
+  condition: string;
+  file: FileList;
+  checkbox: boolean;
+};
 
-  handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
+type FormProps = {
+  addCard: (card: FormData) => void;
+};
+
+const categoryValidate = (value: string): boolean => !!value;
+const conditionValidate = (value: string | null): boolean => !!value;
+
+const Form = (props: FormProps) => {
+  const [file, setFile] = useState<FileList>();
+  const [modal, setModal] = useState(false);
+  const { addCard } = props;
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitSuccessful },
+  } = useForm<FormData>({
+    mode: 'onSubmit',
+    reValidateMode: 'onSubmit',
+  });
+
+  const hendleFileInput = (e: ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files as FileList;
+    setFile(files);
   };
 
-  render() {
-    return (
-      <form className="form" onSubmit={this.handleSubmit}>
-        <input type="text" name="name" placeholder="Name" required />
-        <input type="date" name="date" data-testid="form-date" required />
-        <select name="city" required>
-          <option value="saratov">Saratov</option>
-          <option value="moscow">Moscow</option>
-          <option value="sochi">Sochi</option>
-        </select>
-        <label>
-          Male
-          <input type="radio" name="gender" value="male" required />
+  const onSubmit: SubmitHandler<FormData> = (data) => {
+    if (file) {
+      addCard({ ...data, file });
+    }
+  };
+  useEffect(() => {
+    if (isSubmitSuccessful) {
+      setModal(true);
+      reset();
+    }
+    const id = setTimeout(() => setModal(false), 3000);
+    return () => clearTimeout(id);
+  }, [reset, isSubmitSuccessful]);
+
+  return (
+    <>
+      {modal && <div className="modal">Card added successfully</div>}
+      <form className="form" onSubmit={handleSubmit(onSubmit)}>
+        <input
+          className={`form__field ${errors.name ? 'form__field_error' : ''}`}
+          type="text"
+          placeholder="Name"
+          {...register('name', {
+            required: 'Enter your name',
+          })}
+        />
+        <ErrorMessage
+          errors={errors}
+          name="name"
+          render={({ message }) => <p className="form__error">{message}</p>}
+        />
+        <input
+          className={`form__field ${errors.date ? 'form__field_error' : ''}`}
+          type="date"
+          data-testid="form-date"
+          {...register('date', {
+            required: 'Select date',
+          })}
+        />
+        <ErrorMessage
+          errors={errors}
+          name="date"
+          render={({ message }) => <p className="form__error">{message}</p>}
+        />
+        <label className="form__label">
+          Category
+          <select
+            className={`form__field ${errors.category ? 'form__field_error' : ''}`}
+            {...register('category', {
+              validate: (value) => categoryValidate(value) || 'Select category',
+            })}
+          >
+            <option value="">-- select --</option>
+            <option value="smartphone">smartphone</option>
+            <option value="laptop">laptop</option>
+            <option value="other">other</option>
+          </select>
         </label>
-        <label>
-          Female
-          <input type="radio" name="gender" value="female" required />
+        <ErrorMessage
+          errors={errors}
+          name="category"
+          render={({ message }) => <p className="form__error">{message}</p>}
+        />
+        <div className="form__wrap-radio">
+          <h3 className="form__field-title">Condition</h3>
+          <label>
+            New
+            <input
+              type="radio"
+              value="new"
+              {...register('condition', {
+                validate: (value) => conditionValidate(value) || 'Select condition',
+              })}
+            />
+          </label>
+          <label>
+            Used
+            <input type="radio" value="used" {...register('condition')} />
+          </label>
+        </div>
+        <ErrorMessage
+          errors={errors}
+          name="condition"
+          render={({ message }) => <p className="form__error">{message}</p>}
+        />
+        <input
+          type="file"
+          {...register('file', { required: 'Add image' })}
+          onChange={hendleFileInput}
+        />
+        <ErrorMessage
+          errors={errors}
+          name="file"
+          render={({ message }) => <p className="form__error">{message}</p>}
+        />
+        <label className="form__checkbox">
+          I agree with the posting rules
+          <input type="checkbox" {...register('checkbox', { required: 'Accept the agreement' })} />
         </label>
-        <input type="file" name="file" required />
-        <label>
-          I consent to my personal data
-          <input type="checkbox" name="personal-checkbox" required />
-        </label>
-        <button type="submit">Submit</button>
+        <ErrorMessage
+          errors={errors}
+          name="checkbox"
+          render={({ message }) => <p className="form__error">{message}</p>}
+        />
+        <button className="form__submit" type="submit">
+          Submit
+        </button>
       </form>
-    );
-  }
-}
+    </>
+  );
+};
 
 export default Form;

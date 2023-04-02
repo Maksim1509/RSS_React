@@ -7,4 +7,71 @@
   border: 2px solid #000;
   border-radius: 5px;
   box-shadow: 8px 7px 8px 15px rgba(34, 60, 80, 0.2);
+  &__error {
+    color: red;
+    font-size: 12px;
+    padding: 0;
+    margin: 0;
+    margin-top: -12px;
+  }
+  &__field {
+    border: 2px solid blue;
+    border-radius: 5px;
+    height: 26px;
+    padding-left: 10px;
+    &:focus {
+      outline: none;
+    }
+    &_error {
+      border: 2px solid red;
+    }
+  }
+  &__label {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+  }
+  &__field-title {
+    margin: 0;
+    font-weight: normal;
+    font-size: 1em;
+  }
+  &__checkbox {
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+    input {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  &__submit {
+    background-color: transparent;
+    border: 2px solid #000;
+    border-radius: 5px;
+    width: 40%;
+    align-self: center;
+    cursor: pointer;
+    &:hover {
+      box-shadow: 1px 1px 10px 2px rgba(34, 60, 80, 0.2);
+    }
+  }
+  input {
+    cursor: pointer;
+  }
+  select {
+    cursor: pointer;
+  }
+}
+
+.modal {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #77824c;
+  position: absolute;
+  left: -20px;
+  right: -20px;
+  top: 0;
 }
