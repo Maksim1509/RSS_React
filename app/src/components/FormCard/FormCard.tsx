@@ -11,7 +11,7 @@ const FormCard = ({ name, date, category, condition, file }: FormData) => {
       if (imageRef.current) imageRef.current.src = result;
     };
     reader.readAsDataURL(file[0]);
-  }, []);
+  }, [file]);
 
   return (
     <section className="form-card">
