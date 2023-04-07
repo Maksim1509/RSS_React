@@ -1,23 +1,24 @@
-import React from 'react';
-import { ICard } from 'types/types';
+import React, { useState } from 'react';
+import { Result } from 'types/types';
 import Search from '../../components/Search/Search';
-import Card from '../../components/Card/Card';
-import data from '../../data/data.json';
 import './style.scss';
+import CardsList from '../../components/CardsList/CardsList';
 
 const Homepage = () => {
-  const renderCards = (cardsData: ICard[]) => {
-    return cardsData.map((card) => <Card key={card.id} {...card} />);
+  const [cards, setCards] = useState<Result[]>([]);
+
+  const updateCards = (cards: Result[]) => {
+    setCards(cards);
   };
 
   return (
     <section className="home">
       <h1 className="home__title">Home</h1>
       <div className="home__search">
-        <Search />
+        <Search updateCards={updateCards} />
       </div>
       <section className="home__cards" data-testid="cards-list">
-        {renderCards(data.products)}
+        <CardsList cards={cards} />
       </section>
     </section>
   );
