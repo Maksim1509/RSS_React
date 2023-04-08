@@ -14,7 +14,7 @@ class Layout extends React.Component {
         <main className="main container">
           <Outlet />
         </main>
-        <footer className="footer"></footer>
+        <footer className="footer container">RSSchool</footer>
       </>
     );
   }
