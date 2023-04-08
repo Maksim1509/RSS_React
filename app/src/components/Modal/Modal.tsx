@@ -1,4 +1,4 @@
-import React, { KeyboardEvent, useEffect, useRef, useState } from 'react';
+import React, { KeyboardEvent, MouseEvent, useEffect, useRef, useState } from 'react';
 import './Modal.scss';
 import { BASEURL } from '../../route';
 import { LocationResponse, Result } from 'types/types';
@@ -48,7 +48,7 @@ const Modal = (props: ModalProps) => {
   }, [id]);
 
   return (
-    <div className="home__modal">
+    <div className="home__modal" onClick={hideModal}>
       {loading && <div>LOADING...</div>}
       {error && <div>{error}</div>}
       <button ref={modalRef} className="modal__close" onClick={hideModal} onKeyDown={hideByEsc}>

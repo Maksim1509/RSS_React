@@ -18,7 +18,12 @@ const ModalCard = (props: Result) => {
     </>
   );
   return (
-    <section className="modal-card">
+    <section
+      className="modal-card"
+      onClick={(e) => {
+        e.stopPropagation();
+      }}
+    >
       <img
         className="modal-card__img"
         src={props.image}
