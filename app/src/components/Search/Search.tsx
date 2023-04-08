@@ -67,7 +67,6 @@ const Search = (props: SearchProps) => {
         if (e.message === '404') return showError('Ничего не найдено');
         showError('Что-то пошло не так');
       });
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -81,7 +80,7 @@ const Search = (props: SearchProps) => {
           onChange={handleChange}
           data-testid="search-input"
         />
-        <div className="search__icon" />
+        <div className="search__icon" onClick={searchSubmit} />
       </label>
     </form>
   );
