@@ -1,4 +1,4 @@
-import React, { KeyboardEvent, MouseEvent, useEffect, useRef, useState } from 'react';
+import React, { KeyboardEvent, useEffect, useRef, useState } from 'react';
 import './Modal.scss';
 import { BASEURL } from '../../route';
 import { LocationResponse, Result } from 'types/types';
