@@ -31,8 +31,7 @@ const Homepage = () => {
   return (
     <section className="home">
       {modal && <Modal hideModal={hideModal} id={modalId} />}
-      {loading && <p className="home__loading">Loading...</p>}
-      {error && <p className="home__loading">{error}</p>}
+
       <h1 className="home__title">Home</h1>
       <div className="home__search">
         <Search
@@ -46,6 +45,8 @@ const Homepage = () => {
       <section className="home__cards" data-testid="cards-list">
         <CardsList cards={cards} openModal={openModal} />
       </section>
+      {loading && <p className="home__loading">Loading...</p>}
+      {error && <p className="home__loading">{error}</p>}
     </section>
   );
 };

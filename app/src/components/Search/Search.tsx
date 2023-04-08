@@ -23,16 +23,25 @@ const Search = (props: SearchProps) => {
 
   const searchSubmit = (e: FormEvent) => {
     e.preventDefault();
-    console.log(value);
     hideError();
     showLoading();
     fetch(route(value))
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.status === 404) {
+          updateCards([]);
+          throw new Error('404');
+        }
+        return res.json();
+      })
       .then((data: Root) => {
         hideLoading();
         updateCards(data.results);
       })
-      .catch((e) => console.log(e));
+      .catch((e: Error) => {
+        hideLoading();
+        if (e.message === '404') return showError('Ничего не найдено');
+        showError('Что-то пошло не так');
+      });
   };
 
   useEffect(() => {
@@ -41,15 +50,24 @@ const Search = (props: SearchProps) => {
 
   useEffect(() => {
     showLoading();
-    setTimeout(() => {
-      fetch(route(value))
-        .then((res) => res.json())
-        .then((data: Root) => {
-          hideLoading();
-          updateCards(data.results);
-        })
-        .catch(() => showError('Что-то пошло не так, попробуйте перезагрузить страницу'));
-    }, 3000);
+    fetch(route(value))
+      .then((res) => {
+        if (res.status === 404) {
+          updateCards([]);
+          throw new Error('404');
+        }
+        return res.json();
+      })
+      .then((data: Root) => {
+        hideLoading();
+        updateCards(data.results);
+      })
+      .catch((e: Error) => {
+        hideLoading();
+        if (e.message === '404') return showError('Ничего не найдено');
+        showError('Что-то пошло не так');
+      });
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
