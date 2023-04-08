@@ -35,4 +35,24 @@ export interface Result {
   episode: string[];
   url: string;
   created: string;
+  origin: Origin;
+  location: Location;
+  locationResponse: LocationResponse | null;
+}
+
+export interface Origin {
+  name: string;
+  url: string;
+}
+
+export interface Location {
+  name: string;
+  url: string;
+}
+
+export interface LocationResponse {
+  id: number;
+  name: string;
+  type: string;
+  dimension: string;
 }

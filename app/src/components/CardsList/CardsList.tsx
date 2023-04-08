@@ -3,10 +3,17 @@ import './CardsList.scss';
 import { Result } from 'types/types';
 import Card from '../Card/Card';
 
-const CardsList = ({ cards }: { cards: Result[] }) => (
+interface CardsListProps {
+  cards: Result[];
+  openModal: (id: number) => void;
+}
+
+const CardsList = ({ cards, openModal }: CardsListProps) => (
   <>
     {cards.map((card) => (
-      <Card key={card.id} {...card} />
+      <div key={card.id} className="card__container" onClick={() => openModal(card.id)}>
+        <Card {...card} />
+      </div>
     ))}
   </>
 );

@@ -50,6 +50,7 @@ const Search = (props: SearchProps) => {
         })
         .catch(() => showError('Что-то пошло не так, попробуйте перезагрузить страницу'));
     }, 3000);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

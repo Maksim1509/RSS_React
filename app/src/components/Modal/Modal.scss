@@ -1,0 +1,26 @@
+.home__modal {
+  position: fixed;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: calc(100vh + 20px);
+  background-color: rgba(128, 163, 163, 0.5);
+  top: 0;
+  left: 0;
+  z-index: 2;
+  backdrop-filter: blur(5px);
+}
+
+body:has(.home__modal) {
+  overflow: hidden;
+}
+
+.modal__close {
+  font-weight: bold;
+  font-size: 24px;
+  color: red;
+  margin-left: 400px;
+  cursor: pointer;
+}

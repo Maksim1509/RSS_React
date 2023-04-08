@@ -1,4 +1,4 @@
-const BASEURL = 'https://rickandmortyapi.com/api/character';
+export const BASEURL = 'https://rickandmortyapi.com/api/character';
 
 const route = (query: string) => `${BASEURL}?name=${query}`;
 
