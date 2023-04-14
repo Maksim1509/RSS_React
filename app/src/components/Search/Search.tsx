@@ -1,21 +1,10 @@
 import React, { ChangeEvent, FormEvent, useEffect } from 'react';
-import route from '../../route';
 import './style.scss';
-import { Result, Root } from 'types/types';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { changeSerch } from '../../store/search';
 import { fetchSearchResult } from '../../store/searchResult';
 
-interface SearchProps {
-  updateCards: (cards: Result[]) => void;
-  showLoading: () => void;
-  hideLoading: () => void;
-  showError: (e: string) => void;
-  hideError: () => void;
-}
-
-const Search = (props: SearchProps) => {
-  const { updateCards, showLoading, hideLoading, showError, hideError } = props;
+const Search = () => {
   const dispatch = useAppDispatch();
   const { value } = useAppSelector((state) => state.search);
 
