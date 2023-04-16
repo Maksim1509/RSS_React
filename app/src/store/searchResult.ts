@@ -6,12 +6,14 @@ interface SearchResultState {
   result: Result[];
   isLoading: boolean;
   error: string;
+  isInit: boolean;
 }
 
 const initialState = {
   result: [],
   isLoading: false,
   error: '',
+  isInit: true,
 } as SearchResultState;
 
 export const fetchSearchResult = createAsyncThunk('searchResult/fetch', async (value: string) => {
@@ -27,6 +29,7 @@ const searchResultSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchSearchResult.fulfilled, (state, action) => {
+      if (state.isInit) state.isInit = false;
       state.isLoading = false;
       state.result = action.payload;
     });

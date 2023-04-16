@@ -7,6 +7,7 @@ import { fetchSearchResult } from '../../store/searchResult';
 const Search = () => {
   const dispatch = useAppDispatch();
   const { value } = useAppSelector((state) => state.search);
+  const { isInit } = useAppSelector((state) => state.searchResult);
 
   const handleChange = (e: ChangeEvent) => {
     const { value } = e.target as HTMLInputElement;
@@ -16,47 +17,10 @@ const Search = () => {
   const searchSubmit = (e: FormEvent) => {
     e.preventDefault();
     dispatch(fetchSearchResult(value));
-    // hideError();
-    // showLoading();
-    // fetch(route(value))
-    //   .then((res) => {
-    //     if (res.status === 404) {
-    //       updateCards([]);
-    //       throw new Error('404');
-    //     }
-    //     return res.json();
-    //   })
-    //   .then((data: Root) => {
-    //     hideLoading();
-    //     updateCards(data.results);
-    //   })
-    //   .catch((e: Error) => {
-    //     hideLoading();
-    //     if (e.message === '404') return showError('Ничего не найдено');
-    //     showError('Что-то пошло не так');
-    //   });
   };
 
   useEffect(() => {
-    dispatch(fetchSearchResult(value));
-    // showLoading();
-    // fetch(route(value))
-    //   .then((res) => {
-    //     if (res.status === 404) {
-    //       updateCards([]);
-    //       throw new Error('404');
-    //     }
-    //     return res.json();
-    //   })
-    //   .then((data: Root) => {
-    //     hideLoading();
-    //     updateCards(data.results);
-    //   })
-    //   .catch((e: Error) => {
-    //     hideLoading();
-    //     if (e.message === '404') return showError('Ничего не найдено');
-    //     showError('Что-то пошло не так');
-    //   });
+    if (isInit) dispatch(fetchSearchResult(value));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
