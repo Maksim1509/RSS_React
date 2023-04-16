@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import './FormCard.scss';
-import { FormData } from 'components/Form/Form';
+import { FormData } from '../../types/types';
 
 const FormCard = ({ name, date, category, condition, file }: FormData) => {
   const imageRef = useRef<HTMLImageElement>(null);

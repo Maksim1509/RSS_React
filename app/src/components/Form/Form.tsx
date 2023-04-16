@@ -2,27 +2,17 @@ import React, { ChangeEvent, useEffect, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import './Form.scss';
-
-export type FormData = {
-  name: string;
-  date: string;
-  category: string;
-  condition: string;
-  file: FileList;
-  checkbox: boolean;
-};
-
-type FormProps = {
-  addCard: (card: FormData) => void;
-};
+import { FormData } from '../../types/types';
+import { useAppDispatch } from '../../hooks/hooks';
+import { addFormCard } from '../../store/formCardsSlice';
 
 const categoryValidate = (value: string): boolean => !!value;
 const conditionValidate = (value: string | null): boolean => !!value;
 
-const Form = (props: FormProps) => {
+const Form = () => {
+  const dispatch = useAppDispatch();
   const [file, setFile] = useState<FileList>();
   const [modal, setModal] = useState(false);
-  const { addCard } = props;
   const {
     register,
     handleSubmit,
@@ -40,7 +30,7 @@ const Form = (props: FormProps) => {
 
   const onSubmit: SubmitHandler<FormData> = (data) => {
     if (file) {
-      addCard({ ...data, file });
+      dispatch(addFormCard({ ...data, file }));
     }
   };
   useEffect(() => {

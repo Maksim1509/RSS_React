@@ -1,16 +1,17 @@
-import Form, { FormData } from '../../components/Form/Form';
-import React, { useState } from 'react';
+import Form from '../../components/Form/Form';
+import React from 'react';
 import './FormPage.scss';
 import FormCardList from '../../components/FormCardList/FormCardList';
+import { useAppSelector } from '../../hooks/hooks';
 
 const FormPage = () => {
-  const [cards, setCards] = useState<FormData[]>([]);
-  const addCard = (card: FormData) => setCards([...cards, card]);
+  const { cards } = useAppSelector((state) => state.formCards);
+
   return (
     <section className="form-page">
       <h2 className="form-page__title">Form</h2>
       <section className="form-page__form">
-        <Form addCard={addCard} />
+        <Form />
       </section>
       <section className="form-page__cards">
         <FormCardList cards={cards} />

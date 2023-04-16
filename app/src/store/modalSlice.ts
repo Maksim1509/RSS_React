@@ -26,7 +26,7 @@ export const fetchCardData = createAsyncThunk('modal/fetch', async (id: number) 
 });
 
 const modalSlice = createSlice({
-  name: 'searchResult',
+  name: 'modal',
   initialState,
   reducers: {
     openModal: (state) => {
