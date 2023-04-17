@@ -30,7 +30,12 @@ const Form = () => {
 
   const onSubmit: SubmitHandler<FormData> = (data) => {
     if (file) {
-      dispatch(addFormCard({ ...data, file }));
+      const reader = new FileReader();
+      reader.onload = () => {
+        const result = reader.result as string;
+        dispatch(addFormCard({ ...data, file: result }));
+      };
+      reader.readAsDataURL(file[0]);
     }
   };
   useEffect(() => {

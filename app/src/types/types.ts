@@ -62,7 +62,6 @@ export type FormData = {
   date: string;
   category: string;
   condition: string;
-  file: FileList;
-  // file: string;
+  file: string;
   checkbox: boolean;
 };

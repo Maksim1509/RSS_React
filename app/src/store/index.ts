@@ -11,10 +11,6 @@ const store = configureStore({
     search: searchReducer,
     searchResult: searchResultReducer,
   },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: false,
-    }),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
