@@ -19,4 +19,10 @@
     transform: translateX(-50%);
     color: #fff;
   }
+  &__loading,
+  &__error {
+    font-weight: bold;
+    font-size: 24px;
+    align-self: center;
+  }
 }

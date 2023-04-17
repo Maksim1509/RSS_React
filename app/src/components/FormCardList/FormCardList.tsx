@@ -1,6 +1,6 @@
 import React from 'react';
 import './FormCardList.scss';
-import { FormData } from 'components/Form/Form';
+import { FormData } from '../../types/types';
 import FormCard from '../../components/FormCard/FormCard';
 
 const FormCardList = (props: { cards: FormData[] }) => (

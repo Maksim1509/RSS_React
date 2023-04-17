@@ -56,3 +56,12 @@ export interface LocationResponse {
   type: string;
   dimension: string;
 }
+
+export type FormData = {
+  name: string;
+  date: string;
+  category: string;
+  condition: string;
+  file: string;
+  checkbox: boolean;
+};
