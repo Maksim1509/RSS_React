@@ -15,5 +15,9 @@
     "baseUrl": "./src",
     "resolveJsonModule": true
   },
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
+  },
   "include": ["./src/**/*", "styled.d.ts"]
 }

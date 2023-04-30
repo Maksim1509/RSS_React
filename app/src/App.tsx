@@ -1,22 +1,18 @@
-import Aboutpage from './pages/Aboutpage/Aboutpage';
-import Homepage from './pages/Homepage/Homepage';
-import Notfoundpage from './pages/Notfoundpage/Notfoundpage';
 import React from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
-import './App.css';
-import Layout from './components/Layout/Layout';
-import FormPage from './pages/FormPage/FormPage';
+import Router from './router';
 
-const App = () => (
-  <Routes>
-    <Route path="/" element={<Layout />}>
-      <Route index element={<Homepage />} />
-      <Route path="form" element={<FormPage />} />
-      <Route path="about" element={<Aboutpage />} />
-      <Route path="404" element={<Notfoundpage />} />
-      <Route path="*" element={<Navigate to={'404'} />} />
-    </Route>
-  </Routes>
+export default () => (
+  <html>
+    <head>
+      <meta charSet="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link rel="icon" type="image/png" href="/vite.svg" />
+      <title>My app</title>
+    </head>
+    <body>
+      <div id="app">
+        <Router />
+      </div>
+    </body>
+  </html>
 );
-
-export default App;
