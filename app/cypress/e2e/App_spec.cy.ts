@@ -10,6 +10,15 @@ describe('App e2e', () => {
     cy.visit('/');
     cy.get('li').should('have.length', 3);
   });
+  it('routing', () => {
+    cy.visit('/');
+    cy.contains('About us').click();
+    cy.get('h1').should('have.text', 'About us');
+    cy.contains('Form').click();
+    cy.get('h2').should('have.text', 'Form');
+    cy.contains('Home').click();
+    cy.get('h1').should('have.text', 'Home');
+  });
   it('should have an about page', () => {
     cy.visit('/about');
     cy.get('h1').should('have.text', 'About us');
