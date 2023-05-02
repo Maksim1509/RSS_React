@@ -21,8 +21,10 @@ async function createServer() {
       const { pipe } = render(url, res);
       pipe(res);
     } catch (error) {
-      vite.ssrFixStacktrace(error);
-      next(error);
+      if (error instanceof Error) {
+        vite.ssrFixStacktrace(error);
+        next(error);
+      }
     }
   });
   app.listen(5173, () => console.log('server is running'));
