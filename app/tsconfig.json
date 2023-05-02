@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "esnext",
     "lib": ["dom", "esnext", "dom.iterable"],
+    "types": ["cypress", "node"],
     "jsx": "react",
     "module": "esnext",
     "moduleResolution": "node",
@@ -15,5 +16,10 @@
     "baseUrl": "./src",
     "resolveJsonModule": true
   },
-  "include": ["./src/**/*", "styled.d.ts"]
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
+  },
+  // "include": ["./src/**/*", "styled.d.ts"]
+  "include": ["**/*.ts"]
 }
