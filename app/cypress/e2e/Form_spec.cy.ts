@@ -24,4 +24,22 @@ describe('Form e2e', () => {
     cy.get('input[type=radio]').first().should('not.be.checked');
     cy.get('input[type=checkbox]').should('not.be.checked');
   });
+  it('shoud required fields', () => {
+    cy.visit('/form');
+    cy.get('input[name=name]').should('have.class', 'form__field');
+    cy.get('input[name=date]').should('have.class', 'form__field');
+    cy.get('select').should('have.value', '');
+    cy.get('select').should('have.class', 'form__field');
+    cy.get('form').submit();
+    cy.get('p:first').should('have.text', 'Enter your name');
+    cy.get('p:last').should('have.text', 'Accept the agreement');
+    cy.get('input[name=name]').should('have.class', 'form__field form__field_error');
+    cy.get('input[name=date]').should('have.class', 'form__field form__field_error');
+    cy.get('select').should('have.class', 'form__field_error');
+    cy.get('input[name=name]').type('Name');
+    cy.get('input[name=name]').should('have.class', 'form__field');
+    cy.get('form').submit();
+    cy.get('input[name=name]').should('have.class', 'form__field');
+    cy.get('p:first').should('have.text', 'Select date');
+  });
 });

@@ -43,4 +43,15 @@ describe('App e2e', () => {
     cy.get('.modal__close').click();
     cy.get('.modal-card').should('not.exist');
   });
+  it('active link', () => {
+    cy.visit('/');
+    cy.get('a:first').should('have.class', 'nav__link nav__link_active');
+    cy.contains('About us').click();
+    cy.get('a:last').should('have.class', 'nav__link nav__link_active');
+    cy.get('a:first').should('have.class', 'nav__link');
+  });
+  it('redirect to 404', () => {
+    cy.visit('/notexist');
+    cy.get('h2').should('have.text', 'Not Found');
+  });
 });
