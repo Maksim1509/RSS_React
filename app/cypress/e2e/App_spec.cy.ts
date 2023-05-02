@@ -4,7 +4,8 @@ describe('App e2e', () => {
 
     cy.get('input').should('have.value', '');
     cy.get('h1').should('have.text', 'Home');
-    cy.get('input').type('text').should('have.value', 'text');
+    cy.get('input').type('text');
+    cy.get('input').should('have.value', 'text');
   });
   it('should have 3 link', () => {
     cy.visit('/');
